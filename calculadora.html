@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora</title>
+	
+	<style>
+
+		.container 	{
+			background-color: grey;
+			display: inline-block;
+			padding: 30px;
+			width: 340px;
+		}
+
+		.screen 	{
+			width: 312px;
+			height: 60px;
+			margin: 10px;
+			background-color: green;
+			color: white;
+			font-size: 30pt;
+		}
+
+		.bt 	{
+			display: inline-block;
+			width: 60px;
+			height: 60px;
+			margin:10px;
+			text-align: center;
+			cursor: pointer;
+			font-size: 30pt;
+		}
+
+		.bt-func, .bt-equal, .bt-ac 	{
+			background-color: lightblue;
+		}
+
+		.bt-num 	{
+			background-color: white;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="screen">
+		</div>
+
+		<div class="bt bt-func bt-open">
+			(
+		</div>
+
+		<div class="bt bt-func bt-close">
+			)
+		</div>
+
+		<div class="bt bt-func bt-perc">
+			%
+		</div>
+
+		<div class="bt bt-ac">
+			ac
+		</div>
+
+		<div class="bt bt-num bt-1">
+			1
+		</div>
+
+		<div class="bt bt-num bt-2">
+			2
+		</div>
+
+		<div class="bt bt-num bt-3">
+			3
+		</div>
+
+		<div class="bt bt-func bt-div">
+			/
+		</div>
+
+		<div class="bt bt-num bt-4">
+			4
+		</div>
+
+		<div class="bt bt-num bt-5">
+			5
+		</div>
+
+		<div class="bt bt-num bt-6">
+			6
+		</div>
+
+		<div class="bt bt-func bt-mul">
+			*
+		</div>
+
+		<div class="bt bt-num bt-7">
+			7
+		</div>
+
+		<div class="bt bt-num bt-8">
+			8
+		</div>
+
+		<div class="bt bt-num bt-9">
+			9
+		</div>
+
+		<div class="bt bt-func bt-min">
+			-
+		</div>
+
+		<div class="bt bt-num bt-0">
+			0
+		</div>
+
+		<div class="bt bt-num bt-dot">
+			.
+		</div>
+
+		<div class="bt  bt-equal">
+			=
+		</div>
+
+		<div class="bt bt-func bt-plus">
+			+
+		</div>
+
+	</div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/mathjs@6.6.0/dist/math.min.js"></script>
+
+<script>
+	
+	$(document).ready(function()	{
+
+		var clear = false;
+
+		$(".bt-num, .bt-func").click(function()	{
+
+			if (clear)	{
+
+				$(".screen").html("");
+				clear = false;
+			}
+
+			$(".screen").html($(".screen").html().trim() + $(this).html().trim());
+		});
+
+		$(".bt-ac").click(function()	{
+
+			$(".screen").html("");
+		});
+
+		$(".bt-equal").click(function()	{
+
+			var result = math.eval($(".screen").html());
+			$(".screen").html(result);
+			clear = true;
+		});
+
+	});
+
+</script>
+
+</html>
